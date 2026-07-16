@@ -3,7 +3,7 @@ import type { StreakState } from '../lib/streak'
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div className="text-center">
-      <p className="font-serif text-2xl font-light text-ink-800 dark:text-ink-200">
+      <p className="font-display text-2xl font-light text-ink-800 dark:text-ink-200">
         {value}
       </p>
       <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-ink-400 dark:text-ink-500">

@@ -134,7 +134,7 @@ export default function FocusTimer({ todayLog, onSessionDone }: Props) {
 
       {phase === 'done' ? (
         <div className="py-6">
-          <p className="font-serif text-3xl font-light text-ink-900 dark:text-ink-100">
+          <p className="font-display text-3xl font-light text-ink-900 dark:text-ink-100">
             Well sat.
           </p>
           <p className="mt-1 text-sm text-ink-500 dark:text-ink-400">
@@ -149,7 +149,7 @@ export default function FocusTimer({ todayLog, onSessionDone }: Props) {
         </div>
       ) : (
         <>
-          <p className="py-4 font-serif text-6xl font-light tabular-nums text-ink-900 dark:text-ink-50">
+          <p className="py-4 font-display text-6xl font-light tabular-nums text-ink-900 dark:text-ink-50">
             {fmt(remaining)}
           </p>
 

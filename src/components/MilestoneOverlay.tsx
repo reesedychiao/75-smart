@@ -37,8 +37,8 @@ export default function MilestoneOverlay({ milestone, streak, onDismiss }: Props
     <div className="fixed inset-0 z-40 flex items-center justify-center bg-ink-950/95 px-6 backdrop-blur-sm">
       <div className="max-w-md text-center">
         <p className="text-xs uppercase tracking-[0.3em] text-ink-500">day</p>
-        <p className="font-serif text-9xl font-light text-accent-400">{milestone}</p>
-        <h2 className="mt-6 font-serif text-2xl font-light italic text-ink-100">
+        <p className="font-display text-9xl font-light text-accent-400">{milestone}</p>
+        <h2 className="mt-6 font-display text-2xl font-light text-ink-100">
           {msg.title}
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-ink-400">{msg.body}</p>
@@ -46,7 +46,7 @@ export default function MilestoneOverlay({ milestone, streak, onDismiss }: Props
         {finale && (
           <div className="mt-8 grid grid-cols-3 gap-4 rounded-2xl border border-ink-800 px-4 py-5">
             <div>
-              <p className="font-serif text-2xl font-light text-ink-100">
+              <p className="font-display text-2xl font-light text-ink-100">
                 {streak.totalComplete}
               </p>
               <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-ink-500">
@@ -54,7 +54,7 @@ export default function MilestoneOverlay({ milestone, streak, onDismiss }: Props
               </p>
             </div>
             <div>
-              <p className="font-serif text-2xl font-light text-ink-100">
+              <p className="font-display text-2xl font-light text-ink-100">
                 {Math.round(streak.completionRate * 100)}%
               </p>
               <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-ink-500">
@@ -62,7 +62,7 @@ export default function MilestoneOverlay({ milestone, streak, onDismiss }: Props
               </p>
             </div>
             <div>
-              <p className="font-serif text-2xl font-light text-ink-100">
+              <p className="font-display text-2xl font-light text-ink-100">
                 {streak.resets}
               </p>
               <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-ink-500">

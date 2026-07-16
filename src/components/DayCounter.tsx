@@ -8,14 +8,14 @@ export default function DayCounter({ streak }: { streak: StreakState }) {
       <p className="text-xs uppercase tracking-[0.25em] text-ink-400 dark:text-ink-500">
         day
       </p>
-      <p className="font-serif text-8xl font-light leading-none text-ink-900 dark:text-ink-50">
+      <p className="font-display text-8xl font-light leading-none text-ink-900 dark:text-ink-50">
         {streak.dayCount}
       </p>
       <p className="mt-2 text-sm text-ink-500 dark:text-ink-400">of 75</p>
 
       <div className="mx-auto mt-6 h-px w-full max-w-xs overflow-visible bg-ink-200 dark:bg-ink-700">
         <div
-          className="h-0.75 -translate-y-px rounded-full bg-accent-500 transition-all duration-700"
+          className="h-0.75 -translate-y-px rounded-full bg-linear-to-r from-accent-500 to-tangerine-400 transition-all duration-700"
           style={{ width: `${pct}%` }}
         />
       </div>

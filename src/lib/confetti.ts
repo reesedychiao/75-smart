@@ -1,7 +1,7 @@
 // A tiny hand-rolled confetti burst — a full library would be 30x the code
 // for one moment of delight per day.
 
-const COLORS = ['#d99a3d', '#e8b05c', '#f0c987', '#73736b', '#a3a39b']
+const COLORS = ['#ff6b57', '#ff8a76', '#ffa598', '#ffb347', '#ffd28f']
 
 export function fireConfetti() {
   const canvas = document.createElement('canvas')

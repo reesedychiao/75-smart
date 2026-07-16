@@ -13,6 +13,7 @@ import StatsRow from './StatsRow'
 import HistoryHeatmap from './HistoryHeatmap'
 import FocusTimer from './FocusTimer'
 import MilestoneOverlay from './MilestoneOverlay'
+import ThemeToggle from './ThemeToggle'
 
 const MILESTONES = [25, 50, 75]
 const MILESTONE_SEEN_KEY = '75smart-milestones'
@@ -59,14 +60,15 @@ export default function Dashboard({ userId }: { userId: string }) {
       <div className="mx-auto max-w-xl px-6 pb-24 pt-10">
         <header className="mb-12 flex items-baseline justify-between">
           <span className="text-sm font-medium tracking-tight text-ink-900 dark:text-ink-100">
-            75 <span className="font-serif italic text-accent-500">Smart</span>
+            75 <span className="font-display text-accent-500">Smart</span>
           </span>
-          <span className="flex items-baseline gap-4 text-xs text-ink-400 dark:text-ink-500">
+          <span className="flex items-center gap-4 text-xs text-ink-400 dark:text-ink-500">
             {new Date(`${today}T00:00:00`).toLocaleDateString(undefined, {
               weekday: 'long',
               month: 'long',
               day: 'numeric',
             })}
+            <ThemeToggle />
             <button
               onClick={() => requireSupabase().auth.signOut()}
               className="underline-offset-4 hover:underline"

@@ -7,7 +7,7 @@ function SetupNotice() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-ink-50 px-6 dark:bg-ink-950">
       <div className="max-w-md text-sm leading-relaxed text-ink-600 dark:text-ink-300">
-        <h1 className="mb-3 font-serif text-2xl font-light text-ink-900 dark:text-ink-100">
+        <h1 className="mb-3 font-display text-2xl font-light text-ink-900 dark:text-ink-100">
           Almost there
         </h1>
         <p>

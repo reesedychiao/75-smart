@@ -26,8 +26,8 @@ export default function AuthGate() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-ink-50 px-6 dark:bg-ink-950">
       <div className="w-full max-w-sm">
-        <h1 className="font-serif text-3xl font-light tracking-tight text-ink-900 dark:text-ink-100">
-          75 <span className="italic text-accent-500">Smart</span>
+        <h1 className="font-display text-3xl font-light tracking-tight text-ink-900 dark:text-ink-100">
+          75 <span className="text-accent-500">Smart</span>
         </h1>
         <p className="mt-2 text-sm text-ink-500 dark:text-ink-400">
           Six tasks a day. Seventy-five days. No shortcuts.

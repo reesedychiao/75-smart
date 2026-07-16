@@ -2,6 +2,7 @@ import type { StreakState } from '../lib/streak'
 
 export default function DayCounter({ streak }: { streak: StreakState }) {
   const pct = Math.min(100, (streak.dayCount / 75) * 100)
+  const next = [25, 50, 75].find((m) => m > streak.dayCount)
   return (
     <section className="text-center">
       <p className="text-xs uppercase tracking-[0.25em] text-ink-400 dark:text-ink-500">
@@ -14,16 +15,17 @@ export default function DayCounter({ streak }: { streak: StreakState }) {
 
       <div className="mx-auto mt-6 h-px w-full max-w-xs overflow-visible bg-ink-200 dark:bg-ink-700">
         <div
-          className="h-[3px] -translate-y-[1px] rounded-full bg-accent-500 transition-all duration-700"
+          className="h-0.75 -translate-y-px rounded-full bg-accent-500 transition-all duration-700"
           style={{ width: `${pct}%` }}
         />
       </div>
 
-      {streak.resets > 0 && (
-        <p className="mt-4 text-xs text-ink-400 dark:text-ink-500">
-          {streak.resets} restart{streak.resets > 1 ? 's' : ''} — still here
-        </p>
-      )}
+      <p className="mt-4 text-xs text-ink-400 dark:text-ink-500">
+        {next && `next milestone · day ${next}`}
+        {next && streak.resets > 0 && '   ·   '}
+        {streak.resets > 0 &&
+          `${streak.resets} restart${streak.resets > 1 ? 's' : ''} — still here`}
+      </p>
     </section>
   )
 }

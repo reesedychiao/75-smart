@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { requireSupabase } from '../lib/supabase'
 import { useDayLogs } from '../hooks/useDayLogs'
 import { quoteForDay } from '../lib/quotes'
@@ -11,6 +11,11 @@ import JournalEditor from './JournalEditor'
 import QuoteCard from './QuoteCard'
 import StatsRow from './StatsRow'
 import HistoryHeatmap from './HistoryHeatmap'
+import FocusTimer from './FocusTimer'
+import MilestoneOverlay from './MilestoneOverlay'
+
+const MILESTONES = [25, 50, 75]
+const MILESTONE_SEEN_KEY = '75smart-milestones'
 
 export default function Dashboard({ userId }: { userId: string }) {
   const { logs, todayLog, streak, today, loading, error, updateToday } =
@@ -23,6 +28,23 @@ export default function Dashboard({ userId }: { userId: string }) {
     if (wasComplete.current === false && streak.todayComplete) fireConfetti()
     if (!loading) wasComplete.current = streak.todayComplete
   }, [streak.todayComplete, loading])
+
+  // Milestone days get a full-screen moment. Seen-state is keyed by the date
+  // it was reached, so hitting day 25 again after a reset celebrates again,
+  // but a reload on the same day doesn't.
+  const [milestone, setMilestone] = useState<number | null>(null)
+  useEffect(() => {
+    if (!streak.todayComplete || !MILESTONES.includes(streak.dayCount)) return
+    const seen = JSON.parse(localStorage.getItem(MILESTONE_SEEN_KEY) ?? '{}')
+    if (seen[streak.dayCount] !== today) setMilestone(streak.dayCount)
+  }, [streak.todayComplete, streak.dayCount, today])
+
+  function dismissMilestone() {
+    const seen = JSON.parse(localStorage.getItem(MILESTONE_SEEN_KEY) ?? '{}')
+    seen[milestone!] = today
+    localStorage.setItem(MILESTONE_SEEN_KEY, JSON.stringify(seen))
+    setMilestone(null)
+  }
 
   if (loading) {
     return (
@@ -64,6 +86,10 @@ export default function Dashboard({ userId }: { userId: string }) {
           <DayCounter streak={streak} />
           {streak.atRisk && <RiskBanner />}
           <QuoteCard quote={quoteForDay(streak.startDate, today)} />
+          <FocusTimer
+            todayLog={todayLog}
+            onSessionDone={(key) => updateToday({ [key]: true })}
+          />
           <Checklist
             todayLog={todayLog}
             onToggle={(key: TaskKey, value: boolean) => updateToday({ [key]: value })}
@@ -77,6 +103,14 @@ export default function Dashboard({ userId }: { userId: string }) {
           <HistoryHeatmap streak={streak} logs={logs} />
         </div>
       </div>
+
+      {milestone !== null && (
+        <MilestoneOverlay
+          milestone={milestone}
+          streak={streak}
+          onDismiss={dismissMilestone}
+        />
+      )}
     </div>
   )
 }

@@ -21,28 +21,12 @@ The six daily tasks:
 
 ## Setup
 
-### 1. Supabase (one-time, ~5 minutes)
-
-1. Create a free project at [supabase.com](https://supabase.com).
-2. In the dashboard, open **SQL Editor → New query**, paste the contents of [supabase/schema.sql](supabase/schema.sql), and run it.
-3. Open **Project Settings → API** and copy the project URL and the `anon public` key.
-4. `cp .env.example .env.local` and fill in both values.
-
-### 2. Run locally
-
 ```bash
 npm install
 npm run dev
 ```
 
-Open the app, choose **Create an account**, confirm the email Supabase sends you, and sign in. That account is yours alone — row-level security keeps every row scoped to it.
-
-### 3. Deploy to Vercel
-
-1. Push this repo to GitHub.
-2. At [vercel.com](https://vercel.com), **Add New → Project**, import the repo (Vite is auto-detected).
-3. Under **Environment Variables**, add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` with the same values as `.env.local`.
-4. Deploy. Open the URL on your phone and laptop — same data everywhere.
+Open the app, choose **Create an account**, confirm the email Supabase sends you, and sign in.
 
 ## Development
 
